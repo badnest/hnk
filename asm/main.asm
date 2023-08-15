@@ -10,6 +10,8 @@ output	"../hnk_br.sms"
 
 origin	$00d4e
 db	$00			//fundo preto
+origin	$00d5e
+db	$00			//borda preta
 origin	$00d12
 ld	bc,$0100		//tamanho do gráfico
 origin	$00d1f
