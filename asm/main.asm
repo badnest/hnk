@@ -1,7 +1,7 @@
 arch	sms.cpu
 endian	lsb
-insert	"../hnk.sms"
-output	"../hnk_br.sms"
+insert	"../rom/hnk.sms"
+output	"../rom/hnk_br.sms"
 
 
 //--------------------------------------------------------
