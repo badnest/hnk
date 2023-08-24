@@ -4,6 +4,7 @@ insert	"../rom/hnk.sms"
 output	"../rom/hnk_br.sms"
 include	"./var.asm"
 include	"./table.asm"
+include	"./reset.asm"
 
 
 
@@ -52,6 +53,18 @@ db	"    VERSAO BRASILEIRA      "
 db	"                           "
 db	"     HERBERT RIGHERS       "
 
+
+
+//--------------------------------------------------------
+//melhorias
+//--------------------------------------------------------
+
+//por algum motivo, o jogo demorar pra iniciar de
+//proposito.
+
+//boot rapido
+origin	$00504
+jr	$0050e
 
 
 //--------------------------------------------------------

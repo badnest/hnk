@@ -1,2 +1,2 @@
 #!/bin/sh
-dd if=../hnk.sms of=../gfx/fonte_00.1bpp skip=79573 count=888 bs=1
+dd if=../rom/hnk.sms of=../gfx/fonte_00.1bpp skip=79573 count=888 bs=1
