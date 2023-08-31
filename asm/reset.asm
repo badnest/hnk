@@ -17,13 +17,18 @@ rst	10h
 //--------------------------------------
 
 origin	$00010
-vetor_reset:
+reset_handler:
 
-//reset está pressionado?
-in	a,($dd)
-bit	4,a		
-jr	nz,+		//se sim, resetar
+	//reset está pressionado?
+	in	a,($dd)
+	bit	4,a		
+	jp	z,reset		//se sim, resetar
+	xor	a
+	ret
 
+origin	$07fd7
+
+reset:
 	//desligar video
 	ld	a,$a0
 	out	($bf),a
@@ -44,8 +49,6 @@ jr	nz,+		//se sim, resetar
 	rst	00h
 
 //se reset não estiver pressionado, voltar
-+;xor	a
-ret
 
 
 
@@ -60,7 +63,7 @@ ret
 origin	$00084
 jp	ram_init_load
 
-origin	$07f7a
+origin	$00f7f
 ram_init_load:
 
 //carregar banco onde está a rotina

@@ -1,4 +1,4 @@
 #!/bin/sh
 mount -t msdosfs /dev/da2s1 /mnt/diesel/sd0 &&
-cp ../rom/hnk_br.sms /mnt/diesel/sd0/T/HOKUTO\ NO\ KEN &&
+cp ./rom/hnk_br.sms /mnt/diesel/sd0/T/HOKUTO\ NO\ KEN &&
 doas umount /mnt/diesel/sd0
