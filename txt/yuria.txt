@@ -1,0 +1,8 @@
+#VAR(caixa, TABLE)
+#ADDTBL("./tbl/tabela_00.tbl", caixa)
+#ACTIVETBL(caixa)
+
+#JMP($0)
+<$12><$7A>
+TESTE ACENTOS[BREAK]
+ÁÃÂÁÉÊÍÓÕÔÚÜÇ[END]
