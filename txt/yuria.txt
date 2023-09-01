@@ -3,6 +3,8 @@
 #ACTIVETBL(caixa)
 
 #JMP($0)
-<$12><$7A>
-TESTE ACENTOS[BREAK]
-ÁÃÂÁÉÊÍÓÕÔÚÜÇ[END]
+<$C6><$BD>
+<$1C><$05>
+<$C4><$79>
+ERA APENAS UMA BONECA...[BREAK]
+SALVE A VERDADEIRA YURIA!![END]

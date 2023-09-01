@@ -56,22 +56,6 @@ txt_engine:
 		push	de
 		jr	-
 
-
-origin	$7f70
-txt_cx:
-	push	hl
-	ld	hl,$dbc0
-	call	$025e
-	pop	hl
-	ld	a,(hl)
-	ld	e,a
-	inc	hl
-	ld	a,(hl)
-	ld	d,a
-	inc	hl
-	call	txt_engine
-	ret
-
 origin	$20
 	out	($be),a
 	inc	de

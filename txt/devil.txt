@@ -1,0 +1,12 @@
+#VAR(caixa, TABLE)
+#ADDTBL("./tbl/tabela_00.tbl", caixa)
+#ACTIVETBL(caixa)
+
+#JMP($0)
+<$C6><$BD>
+<$1A><$09>
+<$46><$79>
+O DEMÔNIO FOI DESTRUÍDO.[BREAK]
+[BREAK]
+O PRÓXIMO DESAFIO É [BREAK]
+A LENDA DE CASSANDRA![END]

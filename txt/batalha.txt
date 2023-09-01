@@ -1,0 +1,13 @@
+#VAR(caixa, TABLE)
+#ADDTBL("./tbl/tabela_00.tbl", caixa)
+#ACTIVETBL(caixa)
+
+#JMP($0)
+<$C6><$BD>
+<$14><$0B>
+<$4C><$79>
+A BATALHA ESTÁ[BREAK]
+SÓ COMEÇANDO...[BREAK]
+[BREAK]
+INIMIGOS TERRÍVEIS [BREAK]
+O AGUARDAM!![END]
