@@ -1,0 +1,11 @@
+#VAR(caixa, TABLE)
+#ADDTBL("./tbl/tabela_00.tbl", caixa)
+#ACTIVETBL(caixa)
+
+#JMP($0)
+<$C6><$BD>
+<$1C><$07>
+<$44><$79>
+DURANTE A LUTA,[BREAK]
+TOKI ENSINOU PARA KENSHIRO[BREAK]
+A TÉCNICA DO PUNHO SUAVE.[END]

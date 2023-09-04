@@ -7,6 +7,7 @@ include	"./reset.asm"
 include "./charmap.asm"
 include	"./txt_engine.asm"
 include "./table.asm"
+include "./scene.asm"
 
 
 
@@ -138,6 +139,11 @@ dw	$7a4c
 db	"LENDA DE CASSANDRA"
 db	$ff
 
+txt_cap5:
+dw	$7a46
+db	"ESTILO DO CRUZEIRO DO SUL"
+db	$ff
+
 origin	$0677e
 //ponteiros dos nomes dos capitulos
 txt_capitulo_ptr_tbl:
@@ -145,6 +151,7 @@ dw	txt_cap1
 dw	txt_cap2
 dw	txt_cap3
 dw	txt_cap4
+dw	txt_cap5
 
 
 //texto "capítulo"
@@ -333,7 +340,9 @@ txt_vchefe_toki:
 //--------------------------------------------------------
 //tela 199X
 //--------------------------------------------------------
-
+//desabilitar
+origin	$00d4b
+jr	$0d3f
 origin	$00d4e
 db	$00			//fundo preto
 origin	$00d5e
@@ -380,11 +389,15 @@ txt_batalha:
 insert	"../txt/batalha.bin"
 txt_devil:
 insert	"../txt/devil.bin"
+txt_toki:
+insert	"../txt/toki.bin"
 
-origin	$01381
+origin	$0137f
 txt_ptr_tbl:
+dw	txt_yuria
 dw	txt_batalha
 dw	txt_devil
+dw	txt_toki
 
 
 
@@ -429,7 +442,9 @@ jr	$0050e
 //--------------------------------------------------------
 
 origin	$0b2b4
+gfx_199X:
 insert	"../gfx/199X.1bpp"
+gfx_199X_end:
 
 origin	$0b48c
 tilemap_199X:
@@ -437,3 +452,16 @@ insert	"../gfx/199X.map"
 
 origin	$136d5
 insert	"../gfx/fonte_00_br.1bpp"
+
+
+//--------------------------------------------------------
+//rotinas nativas
+//--------------------------------------------------------
+origin	$00244
+clr_tilemap:
+origin	$00295
+ld_gfx:
+origin	$0025e
+ld_tilemap:
+origin	$6d7a
+clr_psg:
