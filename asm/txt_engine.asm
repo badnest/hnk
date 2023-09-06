@@ -1,68 +1,83 @@
-origin	$07f2e
+;=======================================================================;
+;									;
+;                   *****    ENGINE DE TEXTO    *****			;
+;									;
+;=======================================================================;
 
-//de = destino vram
-//hl = ponteiro texto
-//bc = offset pra subir/descer linhas
+; de = destino vram
+; hl = ponteiro texto
+; bc = offset pra subir/descer linhas
+
+.BANK 0	SLOT 0
+.SECTION "TXT_ENGINE" FREE
 
 txt_engine:
-	rst	08h		//configurar endereço vram
-	push	de		//guardar de pra calcular newline depois
+	rst	08h		; configurar endereço vram
+	push	de		; guardar de pra calcular newline depois
 	
-	-;ld	a,(hl)		//carregar caractere do ponteiro (hl)
-	inc	hl		//aumentar ponteiro
+-:	ld	a,(hl)		; carregar caractere do ponteiro (hl)
+	inc	hl		; aumentar ponteiro
 
 	check_acentos:
-		cp	$f8		//byte de controle?
-		jr	c,txt_normal	//se não, desenhar normal
-		jr	z,txt_cedilha	//cedilha?
+		cp	$f8		; byte de controle?
+		jr	c,txt_normal	; se não, desenhar normal
+		jr	z,txt_cedilha	; cedilha?
 		cp	$fe
-		jr	c,txt_acento	//acento?
-		jr	z,txt_newline	//nova linha?
+		jr	c,txt_acento	; acento?
+		jr	z,txt_newline	; nova linha?
 
-	//caso contrário, resta o endbyte
+	; caso contrário, resta o endbyte
 	txt_endbyte:
-		pop	de		//voltar stack
+		pop	de		; voltar stack
 		ret
 
 	txt_normal:
-		rst	20h		//desenhar caractere
-		rst	08h		//atualizar endereço vram
-		jr	-		//loop
+		rst	20h		; desenhar caractere
+		rst	08h		; atualizar endereço vram
+		jr	-		; loop
 
 	txt_cedilha:
-		sub	$ce		//localizar cedilha
-		rst	20h		//desenhar cedilha
+		sub	$ce		; localizar cedilha
+		rst	20h		; desenhar cedilha
 		ld	bc,$003e
-		rst	30h		//descer linha
-		inc	a		//localizar perna do cedilha
-		rst	20h		//desenhar perna do cedilha
+		rst	30h		; descer linha
+		inc	a		; localizar perna do cedilha
+		rst	20h		; desenhar perna do cedilha
 		ld	bc,$0040
-		rst	28h		//subir linha
+		rst	28h		; subir linha
 		jr	-
 			
 	txt_acento:
-		sub	$cd		//localizar acento
+		sub	$cd		; localizar acento
 		ld	bc,$0042
-		rst	28h		//subir linha
-		rst	20h		//desenhar acento
+		rst	28h		; subir linha
+		rst	20h		; desenhar acento
 		ld	bc,$0040
-		rst	30h		//descer linha
+		rst	30h		; descer linha
 		jr	-
 
 	txt_newline:
-		pop	de		//pegar pos inicial da linha
+		pop	de		; pegar pos inicial da linha
 		ld	bc,$0080
-		rst	30h		//descer linha
+		rst	30h		; descer linha
 		push	de
 		jr	-
+.ENDS
 
-origin	$20
+
+
+; interrupts
+;-----------
+.ORGA	$20
+.SECTION "RESET_20H" OVERWRITE
 	out	($be),a
 	inc	de
 	inc	de
 	ret
+.ENDS
 
-origin	$28
+.ORGA	$28
+.SECTION "RESET_28H" OVERWRITE
 	ex	de,hl
 	sbc	hl,bc
 	ex	de,hl
@@ -70,8 +85,10 @@ origin	$28
 	rst	08h
 	pop	af
 	ret
+.ENDS
 
-origin	$30
+.ORGA	$30
+.SECTION "RESET_30H" OVERWRITE
 	ex	de,hl
 	add	hl,bc
 	ex	de,hl
@@ -79,3 +96,4 @@ origin	$30
 	rst	08h
 	pop	af
 	ret
+.ENDS

@@ -1,7 +1,7 @@
 #!/bin/sh
-for file in ./txt/*.txt; do
-	rm "${file%.txt}.bin"
-	touch "${file%.txt}.bin"
-	perl ../abcde/abcde.pl -cm abcde::Atlas "${file%.txt}.bin" $file
-done
-bass	asm/main.asm
+wla-z80 -v -s -o main.o asm/main.asm > log &&
+echo \[objects]\ > linkfile &&
+echo main.o >> linkfile &&
+wlalink -D -A -v -S linkfile rom/hnk_br.sms &&
+rm linkfile &&
+rm *.o

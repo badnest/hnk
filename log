@@ -1,0 +1,129 @@
+Pass 1...
+Directive checks...
+Internal pass 1...
+Internal pass 2...
+-------------------------------------------------
+---                   ROM                     ---
+-------------------------------------------------
+ROM bank 0 (32596 bytes (99.52%) used)
+  - Outside .SECTIONs (31504 bytes)
+    - Used space at $0000-$08b8 (2233 bytes).
+    - Used space at $08cd-$0f12 (1606 bytes).
+    - Used space at $0fa9-$137e (982 bytes).
+    - Used space at $165d-$6757 (20731 bytes).
+    - Used space at $675e-$677d (32 bytes).
+    - Used space at $680e-$7f2d (5920 bytes).
+  - Sections (1092 bytes)
+    - .SECTION "RESET_IN1" (1 bytes).
+    - .SECTION "RESET_HANDLER" (9 bytes).
+    - .SECTION "RESET" (25 bytes).
+    - .SECTION "RAM_INIT_IN" (3 bytes).
+    - .SECTION "LD_RAM_INIT" (16 bytes).
+    - .SECTION "TXT_ENGINE" (58 bytes).
+    - .SECTION "RESET_20H" (5 bytes).
+    - .SECTION "RESET_28H" (8 bytes).
+    - .SECTION "RESET_30H" (7 bytes).
+    - .SECTION "SCENE_00_IN" (3 bytes).
+    - .SECTION "VM_CAP0_PROP" (17 bytes).
+    - .SECTION "TXT_CAP_IN" (9 bytes).
+    - .SECTION "VM_CAP1_TXT" (117 bytes).
+    - .SECTION "VM_JOG_TXT_PROP" (8 bytes).
+    - .SECTION "VM_JOG_TXT" (7 bytes).
+    - .SECTION "VM_JOG_NUM_PROP" (3 bytes).
+    - .SECTION "VM_X_PROP" (5 bytes).
+    - .SECTION "VM_VIDAS_PROP" (3 bytes).
+    - .SECTION "VM_SPRITE_PROP" (4 bytes).
+    - .SECTION "GAMEOVER_TXT" (9 bytes).
+    - .SECTION "HUD_CAP" (3 bytes).
+    - .SECTION "HUD_1UP" (2 bytes).
+    - .SECTION "HUD_TOP" (2 bytes).
+    - .SECTION "HUD_BONUS00_PROP" (3 bytes).
+    - .SECTION "HUD_BONUS01_PROP" (3 bytes).
+    - .SECTION "HUD_BONUS02_PROP" (3 bytes).
+    - .SECTION "HUD_BONUS00_TXT" (5 bytes).
+    - .SECTION "HUD_BONUS01_TXT" (4 bytes).
+    - .SECTION "HUD_MAIN_PROP" (8 bytes).
+    - .SECTION "HUD_MAIN_TXT" (24 bytes).
+    - .SECTION "HUD_TEMPO00_PROP" (3 bytes).
+    - .SECTION "HUD_TEMPO01_PROP" (3 bytes).
+    - .SECTION "HUD_VIDA00_PROP" (3 bytes).
+    - .SECTION "HUD_VIDA01_PROP" (3 bytes).
+    - .SECTION "HUD_VIDAC00_PROP" (3 bytes).
+    - .SECTION "HUD_VIDAC01_PROP" (3 bytes).
+    - .SECTION "HUD_VIDAC02_PROP" (3 bytes).
+    - .SECTION "BOSS_SHIN_TXT" (4 bytes).
+    - .SECTION "BOSS_CORONEL_TXT" (7 bytes).
+    - .SECTION "BOSS_DEVIL_TXT" (10 bytes).
+    - .SECTION "BOSS_TOKI_TXT" (4 bytes).
+    - .SECTION "BOSS_SOUTHER_TXT" (7 bytes).
+    - .SECTION "HUD_SHIN_PROP" (7 bytes).
+    - .SECTION "TXT_CHEFE_TVAR_IN" (3 bytes).
+    - .SECTION "CREDITOS_IN" (11 bytes).
+    - .SECTION "TXT_TITULO00" (108 bytes).
+    - .SECTION "TXT_TITULO01" (108 bytes).
+    - .SECTION "TXT_TITULO02" (108 bytes).
+    - .SECTION "TEXTO" (295 bytes).
+    - .SECTION "DEBUG_GOLPE_OFF" (3 bytes).
+    - .SECTION "DEBUG_MARKIII_OFF" (2 bytes).
+    - .SECTION "DEBUG_FASTBOOT" (2 bytes).
+    - .SECTION "CHARMAP_OVER_00" (3 bytes).
+    - .SECTION "CHARMAP_OVER_01" (3 bytes).
+    - .SECTION "CHARMAP_OVER_02" (3 bytes).
+    - .SECTION "CHARMAP_OVER_03" (3 bytes).
+    - .SECTION "CHARMAP_OVER_04" (3 bytes).
+    - .SECTION "CHARMAP_OVER_05" (3 bytes).
+ROM bank 1 (6 bytes (37.50%) used)
+  - Outside .SECTIONs (6 bytes)
+    - Used space at $0008-$0009 (2 bytes).
+    - Used space at $000c-$000f (4 bytes).
+  - Sections (0 bytes)
+    - No .SECTIONs found.
+ROM bank 2 (16333 bytes (99.69%) used)
+  - Outside .SECTIONs (15892 bytes)
+    - Used space at $0000-$3393 (13204 bytes).
+    - Used space at $3580-$3fff (2688 bytes).
+  - Sections (441 bytes)
+    - .SECTION "SCENE_00" (111 bytes).
+    - .SECTION "CREDITOS" (18 bytes).
+    - .SECTION "F_GFX_199X" (256 bytes).
+    - .SECTION "F_TM_199X" (56 bytes).
+ROM bank 3 (15939 bytes (97.28%) used)
+  - Outside .SECTIONs (15939 bytes)
+    - Used space at $0000-$3e42 (15939 bytes).
+  - Sections (0 bytes)
+    - No .SECTIONs found.
+ROM bank 4 (15904 bytes (97.07%) used)
+  - Outside .SECTIONs (14925 bytes)
+    - Used space at $0000-$36d4 (14037 bytes).
+    - Used space at $3a4e-$3dc5 (888 bytes).
+  - Sections (979 bytes)
+    - .SECTION "CHARMAP_00" (48 bytes).
+    - .SECTION "VM_CAP0_EXT" (16 bytes).
+    - .SECTION "VM_CAP0_TXT" (10 bytes).
+    - .SECTION "CAIXA" (17 bytes).
+    - .SECTION "F_FONTE" (888 bytes).
+ROM bank 5 (16220 bytes (99.00%) used)
+  - Outside .SECTIONs (16220 bytes)
+    - Used space at $0000-$3f5b (16220 bytes).
+  - Sections (0 bytes)
+    - No .SECTIONs found.
+ROM bank 6 (16044 bytes (97.92%) used)
+  - Outside .SECTIONs (15926 bytes)
+    - Used space at $0000-$3e35 (15926 bytes).
+  - Sections (118 bytes)
+    - .SECTION "RAM_INIT" (67 bytes).
+    - .SECTION "TXT_CHEFE_TVAR" (51 bytes).
+ROM bank 7 (16269 bytes (99.30%) used)
+  - Outside .SECTIONs (16269 bytes)
+    - Used space at $0000-$3f8c (16269 bytes).
+  - Sections (0 bytes)
+    - No .SECTIONs found.
+-------------------------------------------------
+---                   RAM                     ---
+-------------------------------------------------
+No .RAMSECTIONs were found, no information about RAM.
+-------------------------------------------------
+---                 SUMMARY                   ---
+-------------------------------------------------
+ROM: 129311 bytes (98.66%) used.
+RAM: No .RAMSECTIONs were found, no information about RAM.
