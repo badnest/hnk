@@ -116,7 +116,7 @@ ram_init:
 	ld	hl,$d990
 	ld	(hl),$00
 	ld	de,$d991
-	ld	bc,$dfef-$d991
+	ld	bc,$dfdf-$d991
 	ldir
 
 	jr	gravar_initstr

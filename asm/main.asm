@@ -32,13 +32,13 @@
 ; MAPEAMENTO DOS BANCOS
 ;----------------------
 .ROMBANKMAP
-	BANKSTOTAL	8
+	BANKSTOTAL	16
 	BANKSIZE	$7FF0
 	BANKS		1
 	BANKSIZE	$0010
 	BANKS		1
 	BANKSIZE	$4000
-	BANKS		6
+	BANKS		14
 .ENDRO
 
 
@@ -53,7 +53,7 @@
 .UNBACKGROUND 	$7F2E	$7FFF
 .UNBACKGROUND 	$B394	$B57F
 .UNBACKGROUND	$FE43	$FFFF
-.UNBACKGROUND	$136D5	$13A4D
+.UNBACKGROUND	$136D5	$13A4C		; fonte
 .UNBACKGROUND	$13DC6	$13FFF		; charmap
 .UNBACKGROUND	$17F5C	$17FFF
 .UNBACKGROUND	$1BE36	$1BFFF
@@ -70,13 +70,14 @@
 .INCLUDE	"asm/interface.asm"
 .INCLUDE	"asm/titulo.asm"
 .INCLUDE	"asm/txt_main.asm"
+.INCLUDE	"psg/psglib.asm"
 
 
 ; rotinas nativas
 ;----------------
 .DEFINE	clr_tilemap	$0244
 .DEFINE ld_gfx		$0295
-.DEFINE ld_tilemap	$025e
+.DEFINE ld_tmap		$025e
 .DEFINE clr_psg		$6d7a
 
 
@@ -131,6 +132,11 @@
 .SECTION "DEBUG_FASTBOOT" OVERWRITE
 	jr	+08H
 .ENDS
+
+; inicializar sp melhor
+;----------------------
+.ORGA	$0003
+ld	sp,$DFEF
 
 
 
@@ -188,20 +194,28 @@ fonte:
 ;									;
 ;=======================================================================;
 
-.BANK 2 SLOT 2
+.BANK 8 SLOT 0
+.ORG	$0400
 
 ; gráficos
 ;---------
-.SECTION "F_GFX_199X"	FREE
+.SECTION "F_GFX_199X"	SEMIFREE
 	gfx_199X:
 		.INCBIN	"gfx/199X.1bpp"	FSIZE s_199X
 .ENDS
 
 ; tilemaps
 ;---------
-.SECTION "F_TM_199X"	FREE
-	tm_199X:
+.SECTION "F_TMAP_199X"	SEMIFREE
+	tmap_199X:
 		.INCBIN	"gfx/199X.map"
 .ENDS
 
+.BANK 9 SLOT 2
 
+; psg
+;----
+.SECTION "F_PSG"	FREE
+	f_psg_evilp:
+		.INCBIN "psg/evilp.psg"
+.ENDS
