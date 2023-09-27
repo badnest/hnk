@@ -62,7 +62,8 @@ reset:
 ;=======================================================================;
 
 ; interceptar rotina que inicializa a ram
-.ORGA	$00084
+.BANK 0 SLOT 0
+.ORGA	$0084
 .SECTION "RAM_INIT_IN" 		OVERWRITE
 jp	ld_ram_init
 .ENDS
@@ -126,7 +127,7 @@ limpar_ram00:	; limpeza total
 	pop	de
 	pop	hl
 
-	ld	bc,$1fef
+	ld	bc,$1fdf
 	ld	(hl),l
 	ldir
 

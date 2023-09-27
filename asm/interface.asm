@@ -12,7 +12,7 @@
 ;=======================================================================;
 
 .STRINGMAPTABLE	MAIN	"tbl/tabela_00.tbl"
-.BANK 0 SLOT 0
+.BANK 1 SLOT 1
 
 
 ; LINHA 1
@@ -60,7 +60,7 @@ acento_cap:
 ; LINHA 2
 ;--------
 
-.BANK 0 SLOT 0
+.BANK 1 SLOT 1
 .ORGA	$6717
 .SECTION "TXT_CAP_IN"	OVERWRITE
 
@@ -181,7 +181,7 @@ txt_jogador_end:
 ;									;
 ;=======================================================================;
 
-.BANK 0 SLOT 0
+.BANK 1 SLOT 1
 .ORGA	$068eb
 .SECTION "GAMEOVER_TXT"	OVERWRITE
 	.STRINGMAP MAIN, "GAME OVER"
@@ -198,6 +198,7 @@ txt_jogador_end:
 
 ; remover numero do capitulo
 ----------------------------
+.BANK 0 SLOT 0
 .ORGA	$00850
 .SECTION "HUD_CAP" OVERWRITE
 	nop
@@ -219,8 +220,10 @@ txt_jogador_end:
 .ENDS
 
 
+
 ; bonus
 ;------
+.BANK 1 SLOT 1
 .ORGA	$061d8
 .SECTION "HUD_BONUS00_PROP"	OVERWRITE
 	ld	de,$7854	; pos tela
@@ -247,8 +250,10 @@ txt_jogador_end:
 .ENDS
 
 
+
 ; linha principal
 ;----------------
+.BANK 0 SLOT 0
 .ORGA	$0833
 .SECTION "HUD_MAIN_PROP" 	OVERWRITE
 	ld	b,txt_hud_end-txt_hud
@@ -265,74 +270,82 @@ txt_jogador_end:
 	txt_hud_end:
 .ENDS
 
-.ORGA	$06184
+.ORGA	$12d4
 .SECTION "HUD_TEMPO00_PROP"	OVERWRITE
 	ld	de,$78ba	; pos tela
 .ENDS
 
-.ORGA	$012d4
+.BANK 1 SLOT 1
+.ORGA	$6184
 .SECTION "HUD_TEMPO01_PROP"	OVERWRITE
 	ld	de,$78ba	; pos tela
 .ENDS
 
-
 ; pos barra vida kenshiro
 -------------------------
-.ORGA	$0610f
+.BANK 0 SLOT 0
+.ORGA	$088d
 .SECTION "HUD_VIDA00_PROP"	OVERWRITE
-	ld	hl,$789a
-.ENDS
-
-.ORGA	$0088d
-.SECTION "HUD_VIDA01_PROP"	OVERWRITE
 	ld	de,$78ab
 .ENDS
 
-; pos barra vida chefe
-----------------------
-.ORGA	$060fa
-.SECTION "HUD_VIDAC00_PROP"	OVERWRITE
-	ld	hl,$785a
+.BANK 1 SLOT 1
+.ORGA	$610f
+.SECTION "HUD_VIDA01_PROP"	OVERWRITE
+	ld	hl,$789a
 .ENDS
 
-.ORGA	$00859
-.SECTION "HUD_VIDAC01_PROP"	OVERWRITE
+
+; pos barra vida chefe
+----------------------
+.BANK 0 SLOT 0
+.ORGA	$0859
+.SECTION "HUD_VIDAC00_PROP"	OVERWRITE
 	ld	de,$7858
 .ENDS
 
-.ORGA	$00895
-.SECTION "HUD_VIDAC02_PROP"	OVERWRITE
+.ORGA	$0895
+.SECTION "HUD_VIDAC01_PROP"	OVERWRITE
 	ld	de,$786b
+.ENDS
+
+.BANK 1 SLOT 1
+.ORGA	$60fa
+.SECTION "HUD_VIDAC03_PROP"	OVERWRITE
+	ld	hl,$785a
 .ENDS
 
 
 ; nomes dos chefes
 ;-----------------
-.SECTION "BOSS_SHIN_TXT"	SEMISUPERFREE BANKS 0/6
+.BANK 0 SLOT 0
+.ORGA	$0000
+
+.SECTION "BOSS_SHIN_TXT"	FREE
 boss_shin:
 .STRINGMAP MAIN, 	"SHIN"
 boss_shin_end:
 .ENDS
 
-.SECTION "BOSS_CORONEL_TXT"	SEMISUPERFREE BANKS 0/6
+.SECTION "BOSS_CORONEL_TXT"	FREE
 boss_coronel:
 .STRINGMAP MAIN, 	"CORONEL"
 boss_coronel_end:
 .ENDS
 
-.SECTION "BOSS_DEVIL_TXT"	SEMISUPERFREE BANKS 0/6
+.SECTION "BOSS_DEVIL_TXT"	FREE
 boss_devil:
 .STRINGMAP MAIN, 	"D. REVERSE"
 boss_devil_end:
 .ENDS
 
-.SECTION "BOSS_TOKI_TXT" 	SEMISUPERFREE BANKS 0/6
+.SECTION "BOSS_TOKI_TXT" 	FREE
 boss_toki:
 .STRINGMAP MAIN, 	"TOKI"
 boss_toki_end:
 .ENDS
 
-.SECTION "BOSS_SOUTHER_TXT" 	SEMISUPERFREE BANKS 0/6
+.SECTION "BOSS_SOUTHER_TXT" 	FREE
 boss_souther:
 .STRINGMAP MAIN, 	"SOUTHER"
 boss_souther_end:
@@ -340,9 +353,10 @@ boss_souther_end:
 
 
 
-; nomes de chefes de tamanho variavel
+; NOMES DE CHEFES DE TAMANHO VARIAVEL
 ;------------------------------------
 
+.BANK 0 SLOT 0
 .ORGA	$0881
 .SECTION "HUD_SHIN_PROP" OVERWRITE
 	ld	hl,boss_shin

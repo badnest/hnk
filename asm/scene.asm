@@ -8,6 +8,7 @@
 ;---------
 
 .DEFINE	scene_stack	$D000
+.DEFINE	f_scene		$D9DF
 
 .ENUM $0000
 
@@ -48,15 +49,8 @@
 
 .ENDE
 
-.BANK 0 SLOT 0
-.ORG	$0E66
-.SECTION "SCENE_00_IN" OVERWRITE
-	call	scene_00
-.ENDS
-
-.BANK 8 SLOT 0
-.ORG	$0400
-.SECTION "SCENE_ENGINE" SEMIFREE
+.BANK 8 SLOT 1
+.SECTION "SCENE_ENGINE" FREE
 scene_engine_ent:
 
 	; guardar stack pointer em iy
@@ -70,17 +64,14 @@ scene_engine_ent:
 
 scene_engine:
 	pop	af			; carregar cmd
-	rlca				; dobrar - tabela é 16-bits
-	ld	hl,scene_jumptbl	; carregar tabela de jumps
-	add	a,l			; procurar cmd na tabela
-	ld	l,a
-	jr	nc,+
-	inc	h			; se byte< virou, aumentar byte>
-+:	ld	c,(hl)
-	inc	hl
-	ld	b,(hl)			; bc = endereço do jump
-	push	bc			; jogar pro stack
-	ret				; ret vai pro endereço no stack
+	add	a			; dobrar - tabela é 16-bits
+	ld	h,>scene_jumptbl	; carregar tabela de vetores
+	ld	l,a			; carregar offset do cmd
+	ld	a,(hl)			; ld hl,(hl)
+	inc	hl			;
+	ld	h,(hl)			;
+	ld	l,a			;
+	jp	(hl)			; hl = vetor do comando
 
 scene_end:
 	ld	sp,iy			; restaurar antigo stack
@@ -186,25 +177,54 @@ fade_timer:
 d_fade:
 	.DB	$00, $15, $2a, $3f
 
-scene_jumptbl:
-.DW	scene_dis_off
-.DW	scene_dis_on
-.DW	scene_ld_gfx
-.DW	scene_ld_tmap
-.DW	scene_fade_in
-.DW	scene_fade_out
-.DW	scene_psg_play
-.DW	scene_psg_wait
-.DW	scene_timer
-.DW	scene_end
+.ENDS
 
+.SECTION "JUMPTBL_00"	SEMIFREE ALIGN $100
+	scene_jumptbl:
+		.DW	scene_dis_off
+		.DW	scene_dis_on
+		.DW	scene_ld_gfx
+		.DW	scene_ld_tmap
+		.DW	scene_fade_in
+		.DW	scene_fade_out
+		.DW	scene_psg_play
+		.DW	scene_psg_wait
+		.DW	scene_timer
+		.DW	scene_end
 .ENDS
 
 ; TELA 199X
 ;----------
 .BANK 0 SLOT 0
-.ORG $0000
+.ORG	$0E66
+.SECTION "SCENE_00_HOOK" OVERWRITE
+	call	scene_00_in
+.ENDS
 
+.SECTION "SCENE_00_IN" FREE
+scene_00_in:
+	call	clr_psg				; cortar som
+
+	; carregar banco com engine e gfx
+	ld	a,$08
+	ld	($FFFE),a
+
+	; carregar banco com musica
+	ld	a,$09
+	ld	($FFFF),a
+	call	scene_00
+	ld	a,01
+	ld	($FFFE),a
+	ld	a,02
+	ld	($FFFF),a
+	xor	a
+	ld	(f_scene),a
+	ld	a,($d992)
+	di
+	ret
+.ENDS
+
+.BANK 8 SLOT 1
 .SECTION "CMD"		FREE
 cmd_199X:
 .DB	$40,cmd_dis_off		; desligar tela
@@ -215,7 +235,7 @@ cmd_199X:
 .DB	$40,cmd_ld_tmap		; carregar tmap_199X na vram em $7a92
 .DW	$3A92,tmap_199X,$040e	; $040e = tamanho yyxx
 
-.DB	$40,cmd_dis_on		; ligar display
+.DB	$40,cmd_dis_on		; ligar tela
 
 .DB	$40,cmd_timer		; esperar $20 frames
 .DW	$0020
@@ -236,11 +256,12 @@ cmd_199X:
 cmd_199X_end:
 .ENDS
 
-.ORG	$4000
-.SECTION "SCENE_00"	SEMIFREE
+.SECTION "SCENE_00"	FREE
 scene_00:		
-	call	clr_psg				; cortar som
 	call	clr_tilemap			; limpar tilemap
+	call	PSGInit				; inicializar psglib
+	ld	a,$FF
+	ld	(f_scene),a
 
 	; inicializar stack secundario com os comandos da cutscene
 	ld	de,scene_stack
@@ -248,34 +269,17 @@ scene_00:
 	ld	bc,cmd_199X_end-cmd_199X
 	ldir
 
-	; carregar banco com engine e gfx
-	ld	a,$08
-	ld	($FFFD),a
-
-	; carregar banco com musica
-	ld	a,$09
-	ld	($FFFF),a
-	call	PSGInit				; inicializar psglib
-
 	; carregar stack secundario em ix
 	ld	ix,scene_stack
 	
 	; a engine de cutscenes vai carregar os comandos e argumentos
 	; do stack secundario
-	call	scene_engine_ent
-
-scene_00_out:
-	ld	a,$0
-	ld	($FFFD),a
-	ld	a,($d992)
-	di
-	ret
+	jp	scene_engine_ent
 
 .ENDS
 
-
-.BANK 8 SLOT 0
-.ORG	$165D
-vblank:
+.SECTION "SCENE_VBLANK"	FREE
+scene_vblank:
 	call	PSGFrame
 	ret
+.ENDS

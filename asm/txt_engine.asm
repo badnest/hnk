@@ -8,8 +8,9 @@
 ; hl = ponteiro texto
 ; bc = offset pra subir/descer linhas
 
-.BANK 0	SLOT 0
-.SECTION "TXT_ENGINE" FREE
+.BANK 0 SLOT 0
+.ORG $0000
+.SECTION "TXT_ENGINE" 	SEMISUPERFREE BANKS 0-1
 
 txt_engine:
 	rst	08h		; configurar endereço vram
@@ -68,6 +69,7 @@ txt_engine:
 
 ; interrupts
 ;-----------
+.BANK 0	SLOT 0
 .ORGA	$20
 .SECTION "RESET_20H" OVERWRITE
 	out	($be),a

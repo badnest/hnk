@@ -70,7 +70,7 @@ txt_toki:
 
 ; caixas de texto
 ;----------------
-.ORGA	$0129d
+.ORGA	$129d
 call	txt_cx
 
 .BANK 4 SLOT 2

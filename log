@@ -5,15 +5,13 @@ Internal pass 2...
 -------------------------------------------------
 ---                   ROM                     ---
 -------------------------------------------------
-ROM bank 0 (32683 bytes (99.79%) used)
-  - Outside .SECTIONs (31504 bytes)
+ROM bank 0 (16416 bytes (100.20%) used)
+  - Outside .SECTIONs (15480 bytes)
     - Used space at $0000-$08b8 (2233 bytes).
     - Used space at $08cd-$0f12 (1606 bytes).
     - Used space at $0fa9-$137e (982 bytes).
-    - Used space at $165d-$6757 (20731 bytes).
-    - Used space at $675e-$677d (32 bytes).
-    - Used space at $680e-$7f2d (5920 bytes).
-  - Sections (1179 bytes)
+    - Used space at $165d-$3fff (10659 bytes).
+  - Sections (936 bytes)
     - .SECTION "RESET_IN1" (1 bytes).
     - .SECTION "RESET_HANDLER" (9 bytes).
     - .SECTION "RESET" (25 bytes).
@@ -23,36 +21,17 @@ ROM bank 0 (32683 bytes (99.79%) used)
     - .SECTION "RESET_20H" (5 bytes).
     - .SECTION "RESET_28H" (8 bytes).
     - .SECTION "RESET_30H" (7 bytes).
-    - .SECTION "SCENE_00_IN" (3 bytes).
-    - .SECTION "CMD" (40 bytes).
-    - .SECTION "SCENE_00" (47 bytes).
-    - .SECTION "VM_CAP0_PROP" (17 bytes).
-    - .SECTION "TXT_CAP_IN" (9 bytes).
-    - .SECTION "VM_CAP1_TXT" (117 bytes).
-    - .SECTION "VM_JOG_TXT_PROP" (8 bytes).
-    - .SECTION "VM_JOG_TXT" (7 bytes).
-    - .SECTION "VM_JOG_NUM_PROP" (3 bytes).
-    - .SECTION "VM_X_PROP" (5 bytes).
-    - .SECTION "VM_VIDAS_PROP" (3 bytes).
-    - .SECTION "VM_SPRITE_PROP" (4 bytes).
-    - .SECTION "GAMEOVER_TXT" (9 bytes).
+    - .SECTION "SCENE_00_HOOK" (3 bytes).
+    - .SECTION "SCENE_00_IN" (35 bytes).
     - .SECTION "HUD_CAP" (3 bytes).
     - .SECTION "HUD_1UP" (2 bytes).
     - .SECTION "HUD_TOP" (2 bytes).
-    - .SECTION "HUD_BONUS00_PROP" (3 bytes).
-    - .SECTION "HUD_BONUS01_PROP" (3 bytes).
-    - .SECTION "HUD_BONUS02_PROP" (3 bytes).
-    - .SECTION "HUD_BONUS00_TXT" (5 bytes).
-    - .SECTION "HUD_BONUS01_TXT" (4 bytes).
     - .SECTION "HUD_MAIN_PROP" (8 bytes).
     - .SECTION "HUD_MAIN_TXT" (24 bytes).
     - .SECTION "HUD_TEMPO00_PROP" (3 bytes).
-    - .SECTION "HUD_TEMPO01_PROP" (3 bytes).
     - .SECTION "HUD_VIDA00_PROP" (3 bytes).
-    - .SECTION "HUD_VIDA01_PROP" (3 bytes).
     - .SECTION "HUD_VIDAC00_PROP" (3 bytes).
     - .SECTION "HUD_VIDAC01_PROP" (3 bytes).
-    - .SECTION "HUD_VIDAC02_PROP" (3 bytes).
     - .SECTION "BOSS_SHIN_TXT" (4 bytes).
     - .SECTION "BOSS_CORONEL_TXT" (7 bytes).
     - .SECTION "BOSS_DEVIL_TXT" (10 bytes).
@@ -68,18 +47,41 @@ ROM bank 0 (32683 bytes (99.79%) used)
     - .SECTION "DEBUG_GOLPE_OFF" (3 bytes).
     - .SECTION "DEBUG_MARKIII_OFF" (2 bytes).
     - .SECTION "DEBUG_FASTBOOT" (2 bytes).
-    - .SECTION "CHARMAP_OVER_00" (3 bytes).
-    - .SECTION "CHARMAP_OVER_01" (3 bytes).
+    - .SECTION "INIT_STACK" (3 bytes).
+    - .SECTION "BLK_00" (3 bytes).
+    - .SECTION "BLK_01" (18 bytes).
     - .SECTION "CHARMAP_OVER_02" (3 bytes).
     - .SECTION "CHARMAP_OVER_03" (3 bytes).
     - .SECTION "CHARMAP_OVER_04" (3 bytes).
     - .SECTION "CHARMAP_OVER_05" (3 bytes).
-ROM bank 1 (6 bytes (37.50%) used)
-  - Outside .SECTIONs (6 bytes)
-    - Used space at $0008-$0009 (2 bytes).
-    - Used space at $000c-$000f (4 bytes).
-  - Sections (0 bytes)
-    - No .SECTIONs found.
+ROM bank 1 (16245 bytes (99.15%) used)
+  - Outside .SECTIONs (16030 bytes)
+    - Used space at $0000-$2757 (10072 bytes).
+    - Used space at $275e-$277d (32 bytes).
+    - Used space at $280e-$3f2d (5920 bytes).
+    - Used space at $3ff8-$3ff9 (2 bytes).
+    - Used space at $3ffc-$3fff (4 bytes).
+  - Sections (215 bytes)
+    - .SECTION "VM_CAP0_PROP" (17 bytes).
+    - .SECTION "TXT_CAP_IN" (9 bytes).
+    - .SECTION "VM_CAP1_TXT" (117 bytes).
+    - .SECTION "VM_JOG_TXT_PROP" (8 bytes).
+    - .SECTION "VM_JOG_TXT" (7 bytes).
+    - .SECTION "VM_JOG_NUM_PROP" (3 bytes).
+    - .SECTION "VM_X_PROP" (5 bytes).
+    - .SECTION "VM_VIDAS_PROP" (3 bytes).
+    - .SECTION "VM_SPRITE_PROP" (4 bytes).
+    - .SECTION "GAMEOVER_TXT" (9 bytes).
+    - .SECTION "HUD_BONUS00_PROP" (3 bytes).
+    - .SECTION "HUD_BONUS01_PROP" (3 bytes).
+    - .SECTION "HUD_BONUS02_PROP" (3 bytes).
+    - .SECTION "HUD_BONUS00_TXT" (5 bytes).
+    - .SECTION "HUD_BONUS01_TXT" (4 bytes).
+    - .SECTION "HUD_TEMPO01_PROP" (3 bytes).
+    - .SECTION "HUD_VIDA01_PROP" (3 bytes).
+    - .SECTION "HUD_VIDAC03_PROP" (3 bytes).
+    - .SECTION "CHARMAP_OVER_00" (3 bytes).
+    - .SECTION "CHARMAP_OVER_01" (3 bytes).
 ROM bank 2 (15910 bytes (97.11%) used)
   - Outside .SECTIONs (15892 bytes)
     - Used space at $0000-$3393 (13204 bytes).
@@ -117,11 +119,15 @@ ROM bank 7 (16269 bytes (99.30%) used)
     - Used space at $0000-$3f8c (16269 bytes).
   - Sections (0 bytes)
     - No .SECTIONs found.
-ROM bank 8 (497 bytes (3.03%) used)
-  - Outside .SECTIONs (4 bytes)
-    - Used space at $165d-$1660 (4 bytes).
-  - Sections (493 bytes)
-    - .SECTION "SCENE_ENGINE" (181 bytes).
+ROM bank 8 (561 bytes (3.42%) used)
+  - Outside .SECTIONs (0 bytes)
+    - No data outside .SECTIONs.
+  - Sections (561 bytes)
+    - .SECTION "SCENE_ENGINE" (156 bytes).
+    - .SECTION "JUMPTBL_00" (20 bytes).
+    - .SECTION "CMD" (40 bytes).
+    - .SECTION "SCENE_00" (29 bytes).
+    - .SECTION "SCENE_VBLANK" (4 bytes).
     - .SECTION "F_GFX_199X" (256 bytes).
     - .SECTION "F_TMAP_199X" (56 bytes).
 ROM bank 9 (2434 bytes (14.86%) used)
@@ -151,5 +157,5 @@ No .RAMSECTIONs were found, no information about RAM.
 -------------------------------------------------
 ---                 SUMMARY                   ---
 -------------------------------------------------
-ROM: 131907 bytes (50.32%) used.
+ROM: 131943 bytes (50.33%) used.
 RAM: No .RAMSECTIONs were found, no information about RAM.
